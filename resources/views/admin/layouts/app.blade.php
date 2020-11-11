@@ -63,4 +63,4 @@
 <script src="{{ asset('js/components/error.js')  }}"></script>
 @stack('scripts')  
 </body>
-</html>
+</html> 

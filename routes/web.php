@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,10 +24,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     })->name('dashboard');
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-    Route::get('/planets', [App\Http\Controllers\PlanetController::class, 'index'])->name('planets.index');
-    // for($i = 1; $i <= $number_pages; $i++) {
-        Route::get('/planets/index.php?page=', [App\Http\Controllers\PlanetController::class, 'index'])->name('planets.index');
-    // }
+    Route::get('/planets', [App\Http\Controllers\PlanetController::class, 'index'])->name('admin.planets.index');
 
-    Route::get('/starships', [App\Http\Controllers\StarshipController::class, 'index'])->name('starship.index');
+    Route::get('/starships', [App\Http\Controllers\StarshipController::class, 'index'])->name('admin.starships.index');
 }); 
