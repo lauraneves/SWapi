@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Planet;
+use App\Planet;
 use Illuminate\Http\Request;
 use Http;
 
@@ -23,13 +23,16 @@ class PlanetController extends Controller
         $total_collection = $response->count;
       
         $number_pages = $total_collection / $total_per_page;
-      
+
         return view('admin.planets.index', compact('response', 'number_pages'));
     }
 
-    public function show(Planet $planet)
+    public function show($id)
     {
-        return view('planets.show',compact('planet'));
+        $url = "https://swapi.dev/api/planets/" . $id;
+        $response = json_decode(file_get_contents($url));
+
+        return view('admin.planets.form', compact('response'));
     }
 
     public function savePlanet()

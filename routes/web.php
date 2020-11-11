@@ -1,6 +1,6 @@
+
 <?php
 
-use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,19 +12,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
+Route::middleware('auth')->group(function(){
 
-Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
+    Route::get('/', function () {
+        return view('admin.layouts.app');
+        
     })->name('dashboard');
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-    Route::get('/planets', [App\Http\Controllers\PlanetController::class, 'index'])->name('admin.planets.index');
+    Route::get('/home', 'HomeController@index')->name('home');
+    
 
-    Route::get('/starships', [App\Http\Controllers\StarshipController::class, 'index'])->name('admin.starships.index');
-}); 
+    Route::get('/planets', 'PlanetController@index')->name('admin.planets.index');
+    Route::get('/planet/{id}', 'PlanetController@show')->name('admin.planets.form');
+    
+    Route::get('/starships', 'StarshipController@index')->name('admin.starships.index');
+    Route::get('/starship/{id}', 'StarshipController@show')->name('admin.starships.form');
+
+    // Route::get('/saved', 'StarshipController@index')->name('admin.saved.index');
+    // Route::get('/starship/{id}', 'StarshipController@show')->name('admin.saved.form');
+});

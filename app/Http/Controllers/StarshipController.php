@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Starship;
 
 class StarshipController extends Controller
 {
-    public function index() 
+    public function index(Request $request) 
     {
         $page = 1;
         if(request('page'))
@@ -20,15 +19,18 @@ class StarshipController extends Controller
       
         $total_per_page = count($response->results);
         $total_collection = $response->count;
-      
+        
         $number_pages = $total_collection / $total_per_page;
-      
+        
         return view('admin.starships.index', compact('response', 'number_pages'));
     }
 
-    public function show(Starship $starship)
+    public function show($id)
     {
-        // return view('admin.starships.show',compact('starship'));
+        $url = "https://swapi.dev/api/starships/" . $id;
+        $response = json_decode(file_get_contents($url));
+
+        return view('admin.starships.form', compact('response'));
     }
 
     public function saveStarship()

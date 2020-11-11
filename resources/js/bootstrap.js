@@ -9,9 +9,14 @@ window._ = require('lodash');
 try {
     window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
-
+    window.Swal = require('sweetalert2'); 
     require('bootstrap');
+    require('@fortawesome/fontawesome-free');
     require('admin-lte');
+    require('sweetalert2');
+    require('jquery-mask-plugin');
+    require('overlayscrollbars');
+    require('datatables.net-bs4');
 } catch (e) {}
 
 /**
@@ -38,5 +43,5 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     broadcaster: 'pusher',
 //     key: process.env.MIX_PUSHER_APP_KEY,
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-//     forceTLS: true
+//     encrypted: true
 // });
