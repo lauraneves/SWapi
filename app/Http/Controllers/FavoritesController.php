@@ -2,20 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Favorites;
+use App\Planet;
+use App\Starship;
 
 class FavoritesController extends Controller
 {
     public function index() 
     {
-        $favorites = Favorites::all();
-        return view('admin.favorites.index', compact('favorites'));
-    }
-
-    public function destroy(Favorites $favorites)
-    {
-        $favorites->delete();
-        return redirect()->route('admin.saved.index')->with('success',true);
+        $favoritesStarships = Starship::all();
+        $favoritesPlanets = Planet::all();
+        return view('admin.favorites.index', compact('favoritesStarships', 'favoritesPlanets'));
     }
 }

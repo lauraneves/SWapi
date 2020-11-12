@@ -3,21 +3,18 @@
 @section('content')
     @component('admin.components.table')
         @slot('head')
-            <th>Item</th>
-            <th></th>
+            <th>Nome</th>
         @endslot
         @slot('body')
         <div>
-            @foreach($url as $item)
+            @foreach($favoritesStarships as $favoriteS)
             <tr>
-                <td>{{ $item->name }}</td>        
-                <td class="options">
-                    <form method="POST" class="form-delete" action="{{ route('admin.saved.destroy',$item->id)}}">
-                        @method('DELETE')
-                        @csrf
-                        <button type="submit" class="btn btn-dark"><i class="fas fa-trash"></i></button>
-                    </form>    
-                </td>       
+                <td>{{ $favoriteS->name }}</td>        
+            </tr>
+            @endforeach
+            @foreach($favoritesPlanets as $favoriteP)
+            <tr>
+                <td>{{ $favoriteP->name }}</td>        
             </tr>
             @endforeach
         </div>
@@ -26,6 +23,5 @@
 @endsection
 
 @push('scripts')
-    {{-- <script src="{{ asset('js/components/dataTable.js') }}"></script> --}}
     <script src="{{ asset('js/components/sweetAlert.js') }}"></script>
 @endpush

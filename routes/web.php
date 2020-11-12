@@ -29,6 +29,6 @@ Route::middleware('auth')->group(function(){
     Route::post('/starships', 'StarshipController@store')->name('admin.starships.store');
     Route::get('/starship/{id}', 'StarshipController@show')->name('admin.starships.form');
 
-    Route::get('/favorites', 'StarshipController@index')->name('admin.favorites.index');
-    // Route::get('/starship/{id}', 'StarshipController@show')->name('admin.saved.form');
+    Route::get('/favorites', 'FavoritesController@index')->name('admin.favorites.index');
+    Route::get('/favorite/{id}', 'FavoriteController@show')->name('admin.favorites.form');
 });

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use app\Http\Controllers\Auth;
+use Illuminate\Support\Facades\Auth;
 use App\Starship;
 use Illuminate\Http\Request;
 
