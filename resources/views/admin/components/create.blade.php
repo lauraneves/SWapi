@@ -6,7 +6,7 @@
         <div class="card-body">
             <form id="form-adicionar" action="{{ $url ?? '/' }}" method="post" enctype="multipart/form-data">
                 @csrf
-                {{ $form ?? null }}
+                {{ $content ?? null }}
             </form>
         </div>
         <div class="card-footer">

@@ -13,11 +13,6 @@ class FavoritesController extends Controller
         return view('admin.favorites.index', compact('favorites'));
     }
 
-    public function store()
-    {
-        
-    }
-
     public function destroy(Favorites $favorites)
     {
         $favorites->delete();

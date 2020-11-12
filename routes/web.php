@@ -22,9 +22,11 @@ Route::middleware('auth')->group(function(){
     Route::get('/home', 'HomeController@index')->name('home');
 
     Route::get('/planets', 'PlanetController@index')->name('admin.planets.index');
+    Route::post('/planets', 'PlanetController@store')->name('admin.planets.store');
     Route::get('/planet/{id}', 'PlanetController@show')->name('admin.planets.form');
     
     Route::get('/starships', 'StarshipController@index')->name('admin.starships.index');
+    Route::post('/starships', 'StarshipController@store')->name('admin.starships.store');
     Route::get('/starship/{id}', 'StarshipController@show')->name('admin.starships.form');
 
     Route::get('/favorites', 'StarshipController@index')->name('admin.favorites.index');

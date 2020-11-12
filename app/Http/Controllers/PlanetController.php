@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Planet;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Http;
 
@@ -32,12 +33,28 @@ class PlanetController extends Controller
         $url = "https://swapi.dev/api/planets/" . $id;
         $response = json_decode(file_get_contents($url));
 
-        return view('admin.planets.form', compact('response', 'url'));
+        return view('admin.planets.show', compact('response', 'url', 'id'));
     }
 
-    public function favoritePlanet(Request $request, $url)
+    public function store(Request $request)
     {
-        $favoritePlanet = $url;
+        $url = "https://swapi.dev/api/planets/" . $request->id;
+        $response = json_decode(file_get_contents($url));
+        
+        $planet = Planet::create([
+            'name' => $response->name,
+            'climate' => $response->climate,
+            'terrain' => $response->terrain,
+            'population' => $response->population,
+            'surface_water' => $response->surface_water,
+            'rotation_period' => $response->rotation_period,
+            'orbital_period' => $response->orbital_period,
+            'diameter' => $response->diameter,
+            'gravity' => $response->gravity,
+        ]);
+
+        $planet->users()->attach(Auth::user()->id);
+
         return redirect()->route('admin.planets.index')->with('success',true);
     }
 }

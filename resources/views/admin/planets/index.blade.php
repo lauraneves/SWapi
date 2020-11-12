@@ -18,7 +18,6 @@
                     <td>{{ $planet->climate }}</td>        
                     <td class="options">
                         <a href="{{ route('admin.planets.form', $id) }}" class="btn btn-success" title="Visualizar"><i class="far fa-eye"></i></a>
-                        {{-- <a href="{{ route('admin.planets.form', $id) }}" class="btn btn-success" title="Visualizar"><i class="far fa-eye"></i></a> --}}
                     </td>        
                 </tr>
             @endforeach
@@ -26,10 +25,10 @@
         <div class="btn-toolbar">
             <div class="btn-group mr-2">
                 @for ($pages = 1; $pages <= $number_pages; $pages++)
-                <form action="{{ route('admin.planets.index') }}" method="GET" >
-                    <input type="hidden" name="page" value="{{ $pages }}">
-                    <button class="btn btn-secondary" type="submit">{{ $pages }}</button>
-                </form>
+                    <form action="{{ route('admin.planets.index') }}" method="GET" >
+                        <input type="hidden" name="page" value="{{ $pages }}">
+                        <button class="btn btn-secondary" type="submit">{{ $pages }}</button>
+                    </form>
                 @endfor
             </div>
         </div>

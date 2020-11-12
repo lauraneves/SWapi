@@ -2,10 +2,6 @@
 
 @section('content')
     @component('admin.components.table')
-        {{-- @slot('titulo', 'Naves') --}}
-        {{-- @can('create', App\Model::class)
-            @slot('create',route('x.create'))
-        @endcan --}}
         @slot('head')
             <th>Nome</th>
             <th>Modelo</th>

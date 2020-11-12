@@ -15,9 +15,18 @@ class CreatePlanetsTable extends Migration
     {
         Schema::create('planets', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('url');
+            $table->string('name');
+            $table->string('climate');
+            $table->string('terrain');
+            $table->string('surface_water');
+            $table->string('population');
+            $table->string('rotation_period');
+            $table->string('orbital_period');
+            $table->string('diameter');
+            $table->string('gravity');
             $table->timestamps();
         });
+
     }
 
     /**

@@ -37,4 +37,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function planets() {
+        return $this->belongsToMany('App\Planet', 'users_planets', 'planet_id', 'user_id');
+    }
+
+    public function starships() {
+        return $this->belongsToMany('App\Starship', 'users_starships', 'starship_id', 'user_id');
+    }
 }

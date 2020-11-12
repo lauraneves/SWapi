@@ -1,13 +1,14 @@
 <?php
 
 namespace App;
-
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Planet extends Model
 {
-    public function favorites()
-    {
-        return $this->belongsToMany('App\Favorites');
+    protected $guarded = [];
+
+    public function users() {
+        return $this->belongsToMany('App\User', 'users_planets', 'planet_id', 'user_id');
     }
 }
