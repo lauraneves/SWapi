@@ -1,5 +1,6 @@
-
 <?php
+
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,14 +15,11 @@
 
 Auth::routes();
 Route::middleware('auth')->group(function(){
-
     Route::get('/', function () {
         return view('admin.layouts.app');
         
     })->name('dashboard');
-
     Route::get('/home', 'HomeController@index')->name('home');
-    
 
     Route::get('/planets', 'PlanetController@index')->name('admin.planets.index');
     Route::get('/planet/{id}', 'PlanetController@show')->name('admin.planets.form');
@@ -29,6 +27,6 @@ Route::middleware('auth')->group(function(){
     Route::get('/starships', 'StarshipController@index')->name('admin.starships.index');
     Route::get('/starship/{id}', 'StarshipController@show')->name('admin.starships.form');
 
-    // Route::get('/saved', 'StarshipController@index')->name('admin.saved.index');
+    Route::get('/favorites', 'StarshipController@index')->name('admin.favorites.index');
     // Route::get('/starship/{id}', 'StarshipController@show')->name('admin.saved.form');
 });

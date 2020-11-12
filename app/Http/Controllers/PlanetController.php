@@ -32,11 +32,12 @@ class PlanetController extends Controller
         $url = "https://swapi.dev/api/planets/" . $id;
         $response = json_decode(file_get_contents($url));
 
-        return view('admin.planets.form', compact('response'));
+        return view('admin.planets.form', compact('response', 'url'));
     }
 
-    public function savePlanet()
+    public function favoritePlanet(Request $request, $url)
     {
-        
+        $favoritePlanet = $url;
+        return redirect()->route('admin.planets.index')->with('success',true);
     }
 }

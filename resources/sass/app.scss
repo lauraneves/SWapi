@@ -1,11 +1,11 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url("https://fonts.googleapis.com/css?family=Nunito");
 
 // Variables
-@import 'variables';
+@import "variables";
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
 
 // Font Awesome
 @import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
@@ -13,28 +13,35 @@
 @import "~@fortawesome/fontawesome-free/scss/solid.scss";
 @import "~@fortawesome/fontawesome-free/scss/brands.scss";
 
+// DataTable
+@import "~datatables.net-bs4/css/dataTables.bootstrap4.min.css";
+
 // AdminLTE
 @import "~admin-lte/build/scss/AdminLTE.scss";
 
 //Select2
 @import "~select2/dist/css/select2.css";
 
-//Datatable
-@import '~datatables.net-scroller-bs4/css/scroller.bootstrap4.min.css';
-
-//OverlayScrollbars
-@import "~overlayscrollbars/css/OverlayScrollbars.min.css";
+//SummerNote
+@import "~sumernote/dist/summernote.min.css";
 
 
-.options{
-    white-space: nowrap;
+.select2 {
+  width: 100% !important;
+}
+.mutiple {
+  width: 10px !important;
 }
 
-.options>*{
-    display: inline-block;
+.required::after {
+  content: "*";
+  color: red;
 }
 
-.required::after{
-    content: '*';
-    color: red;
+.options {
+  white-space: nowrap;
+}
+
+.options > * {
+  display: inline-block;
 }

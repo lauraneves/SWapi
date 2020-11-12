@@ -2,10 +2,6 @@
 
 @section('content')
     @component('admin.components.table')
-        @slot('titulo', 'Planetas')
-        {{-- @can('create', App\Model::class)
-            @slot('create',route('x.create'))
-        @endcan --}}
         @slot('head')
             <th>Nome</th>
             <th>Clima</th>
@@ -14,16 +10,17 @@
         @slot('body')
         <div>
             @foreach($response->results as $planet)
-            @php
-                $id = substr($planet->url, 29, 29);
-            @endphp
-            <tr>
-                <td>{{ $planet->name }}</td>        
-                <td>{{ $planet->climate }}</td>        
-                <td class="options">
-                    <a href="{{ route('admin.planets.form', $id) }}" class="btn btn-success" title="Visualizar"><i class="far fa-eye"></i></a>
-                </td>        
-            </tr>
+                @php
+                    $id = substr($planet->url, 29, 29);
+                @endphp
+                <tr>
+                    <td>{{ $planet->name }}</td>        
+                    <td>{{ $planet->climate }}</td>        
+                    <td class="options">
+                        <a href="{{ route('admin.planets.form', $id) }}" class="btn btn-success" title="Visualizar"><i class="far fa-eye"></i></a>
+                        {{-- <a href="{{ route('admin.planets.form', $id) }}" class="btn btn-success" title="Visualizar"><i class="far fa-eye"></i></a> --}}
+                    </td>        
+                </tr>
             @endforeach
         </div>
         <div class="btn-toolbar">
